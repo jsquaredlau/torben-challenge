@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./Form.scss";
+import Name from "./form-items/Name";
 
 type FormProps = {
   data: any;
@@ -30,6 +31,11 @@ class Form extends Component<FormProps, FormState> {
   }
 
   formParser(formItem: any) {
+    if (formItem.type === FormItem.Name) {
+      return (
+        <Name data={formItem} update={() => { }}></Name>
+      )
+    }
     return (<div></div>)
   }
 

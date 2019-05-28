@@ -20,11 +20,11 @@ const formSchema = {
       displayLabel: "Contact Numbers",
       fields: [
         {
-          type: ContactType.Home,
+          type: "Home",
           required: true,
         },
         {
-          type: ContactType.Mobile,
+          type: "Mobile",
           required: false,
         }
       ]
