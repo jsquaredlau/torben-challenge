@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Form.scss";
 import Name from "./form-items/Name";
+import Contact from "./form-items/Contact"
 
 type FormProps = {
   data: any;
@@ -36,8 +37,13 @@ class Form extends Component<FormProps, FormState> {
       return (
         <Name data={formItem} update={this.update} key={formItem.type}></Name>
       )
+    } else if (formItem.type === FormItem.Contact) {
+      return (
+        <Contact data={formItem} update={this.update} key={formItem.type}></Contact>
+      )
+    } else {
+      return (<div></div>)
     }
-    return (<div></div>)
   }
 
   submit() {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.scss';
 import Form, { FormItem } from "./Form";
+import { ContactType } from "./form-items/Contact";
 
 
 
@@ -20,11 +21,11 @@ const formSchema = {
       displayLabel: "Contact Numbers",
       fields: [
         {
-          type: "Home",
+          type: ContactType.Home,
           required: true,
         },
         {
-          type: "Mobile",
+          type: ContactType.Mobile,
           required: false,
         }
       ]
