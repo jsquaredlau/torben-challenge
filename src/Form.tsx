@@ -23,20 +23,25 @@ class Form extends Component<FormProps, FormState> {
     this.state = {
       response: {}
     }
-    this.update = this.forceUpdate.bind(this);
+    this.update = this.update.bind(this);
   }
 
   update(data: any) {
     console.log(data);
+    this.setState({ response: { ...this.state.response, ...data } })
   }
 
   formParser(formItem: any) {
     if (formItem.type === FormItem.Name) {
       return (
-        <Name data={formItem} update={() => { }}></Name>
+        <Name data={formItem} update={this.update} key={formItem.type}></Name>
       )
     }
     return (<div></div>)
+  }
+
+  submit() {
+    console.log(this.state.response);
   }
 
   render() {
@@ -45,6 +50,7 @@ class Form extends Component<FormProps, FormState> {
         {Object.keys(this.props.data.items).map(item => {
           return this.formParser(this.props.data.items[item])
         })}
+        <button className="form__submit" onClick={() => this.submit()}>Submit</button>
       </div>
     )
   }

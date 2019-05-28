@@ -20,12 +20,26 @@ class Name extends Component<NameProps, NameState> {
     }
   }
 
+  handleBlur(event: any) {
+    const name = event.target.value;
+    if (!name.includes(" ")) {
+      this.setState({ showError: true });
+    } else {
+      this.setState({ showError: false });
+      this.setState({ value: event.target.value }, () => {
+        this.props.update({
+          name: this.state.value
+        })
+      });
+    }
+  }
+
   render() {
     return (
       <div className="name">
         <label className="name__label">{this.props.data.displayLabel}</label>
-        <input className="name__input" type="text" placeholder={this.props.data.placeholder}></input>
-        <p className={"name__error-message" + (this.state.showError ? "" : " name__error-message--hidden")}>{this.props.data.errorMessage}</p>
+        <input className="name__input" type="text" placeholder={this.props.data.placeholder} defaultValue="" onBlur={event => this.handleBlur(event)}></input>
+        <p className={"name__error-message" + (this.state.showError ? "" : " name__error-message--hidden")}> {this.props.data.errorMessage}</p>
       </div>
     )
   }

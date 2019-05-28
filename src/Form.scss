@@ -4,4 +4,14 @@
   min-height: 400px;
   background-color: white;
   padding: 20px;
+
+  &__submit {
+    margin-top: 20px;
+    width: 150px;
+    height: 30px;
+    background-color: green;
+    border-radius: 15px;
+    color: white;
+    border: none;
+  }
 }
