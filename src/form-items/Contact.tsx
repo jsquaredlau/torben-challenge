@@ -8,8 +8,17 @@ export enum ContactType {
 }
 
 type ContactProps = {
-  data: any;
-  update: any;
+  data: {
+    type: string,
+    displayLabel: string,
+    fields: [
+      {
+        type: ContactType,
+        required: boolean,
+      }
+    ]
+  };
+  update: ((data: object) => void);
 }
 
 type ContactState = {
@@ -22,7 +31,7 @@ type ContactState = {
 const MobileNumber = ({ required, callback }: { required: boolean, callback: any }) => {
   return (
     <div className="mobile-number">
-      <label className="mobile-number__label" >Mobile</label>
+      <label className="mobile-number__label">Mobile</label>
       <input className="mobile-number__input" type="text" placeholder="Mobile number" defaultValue="" required={required} onBlur={event => callback(event, "mobile")}></input>
     </div>
   )
@@ -44,7 +53,7 @@ class Contact extends Component<ContactProps, ContactState> {
     this.handleBlur = this.handleBlur.bind(this);
   }
 
-  handleBlur(event: any, type: any) {
+  handleBlur(event: React.FocusEvent<HTMLInputElement>, type: string) {
     this.setState({ [type]: event.target.value }, () => {
       let contactValues = [];
       contactValues = Object.keys(this.state).map(contact => {

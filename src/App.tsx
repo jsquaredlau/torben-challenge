@@ -3,8 +3,6 @@ import './App.scss';
 import Form, { FormItem } from "./Form";
 import { ContactType } from "./form-items/Contact";
 
-
-
 const formSchema = {
   title: "A form for Torben",
   description: "A dynamically generated form based upon a json schema",

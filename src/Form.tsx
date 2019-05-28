@@ -1,14 +1,18 @@
 import React, { Component } from "react";
-import "./Form.scss";
 import Name from "./form-items/Name";
 import Contact from "./form-items/Contact"
+import "./Form.scss";
 
 type FormProps = {
-  data: any;
+  data: {
+    title: string;
+    description: string;
+    items: any;
+  };
 }
 
 type FormState = {
-  response: any;
+  response: object;
 }
 
 export enum FormItem {
@@ -27,8 +31,7 @@ class Form extends Component<FormProps, FormState> {
     this.update = this.update.bind(this);
   }
 
-  update(data: any) {
-    console.log(data);
+  update(data: object) {
     this.setState({ response: { ...this.state.response, ...data } })
   }
 
@@ -42,7 +45,7 @@ class Form extends Component<FormProps, FormState> {
         <Contact data={formItem} update={this.update} key={formItem.type}></Contact>
       )
     } else {
-      return (<div></div>)
+      return (<div key={formItem.type}></div>)
     }
   }
 

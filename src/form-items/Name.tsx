@@ -2,12 +2,18 @@ import React, { Component } from "react";
 import "./Name.scss";
 
 type NameProps = {
-  data: any;
-  update: any;
+  data: {
+    type: string,
+    displayLabel: string,
+    placeholder: string,
+    errorMessage: string,
+    required: boolean,
+  };
+  update: ((data: object) => void);
 }
 
 type NameState = {
-  value: any;
+  value: string;
   showError: boolean;
 }
 
@@ -20,9 +26,9 @@ class Name extends Component<NameProps, NameState> {
     }
   }
 
-  handleBlur(event: any) {
+  handleBlur(event: React.FocusEvent<HTMLInputElement>) {
     const name = event.target.value;
-    if (!name.includes(" ")) {
+    if (!name.match(/\w \w/)) {
       this.setState({ showError: true });
     } else {
       this.setState({ showError: false });
