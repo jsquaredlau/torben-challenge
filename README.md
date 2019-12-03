@@ -1,3 +1,9 @@
+# Project : Conditional form input rendering based on JSON | ReactJS & TypeScript
+The challenge was to first design a JSON schema that described the necessary inputs of a form and the metadata of those inputs. The second was to develop a form component in React that would show different input fields based upon the schema, which would be taken in as an argument
+
+Duration : 2hrs = 40min designing + 1hr 20 developing
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
